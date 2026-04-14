@@ -46,11 +46,11 @@ class PostForm
                                     'required' => 'Category wajib dipilih.',
                                 ]),
 
-                            FileUpload::make('image')
-                                ->required()
-                                ->validationMessages([
-                                    'required' => 'Gambar wajib diupload.',
-                                ]),
+                            // FileUpload::make('image')
+                            //     ->required()
+                            //     ->validationMessages([
+                            //         'required' => 'Gambar wajib diupload.',
+                            //     ]),
                         ])
                         ->columns(2),
 
@@ -66,7 +66,11 @@ class PostForm
                         ->schema([
                             FileUpload::make('image')
                                 ->disk('public')
-                                ->directory('post'),
+                                ->directory('post')
+                                ->required()
+                                ->validationMessages([
+                                    'required' => 'Gambar wajib diupload.',
+                                ]),
                         ]),
 
                     Section::make('Meta')
